@@ -11,7 +11,10 @@ Possible future improvements:
 var quotes = [
   //Complete Quote 1.
   {
-    //id is a unique identifier for the quote object.
+    /*
+    id is a unique identifier for the quote object, not fully used here but could be used by end-user
+    and to compare quotes for future improvement #1.
+    */
     id: 1,
     quote: 'For you, the day Bison graced your village was the most important day of your life. But for me, it was Tuesday.',
     source: 'Bison',
@@ -83,13 +86,13 @@ function printQuote() {
   //Selected quote details.
   console.log('Quote ID: ' + id + '.  Number of Quote Tags: ' + tags.length + '.  Quote Text: "' + quote + '"');
 
-    //Write HTML for caption based on tags.
-    if (tags.length === 1) {
-    writeHTML += '<div id="tags"><center><u>' + tags[0].toUpperCase() + '</u></center></div><br>';
+  //Write HTML for caption based on tags.
+  if (tags.length === 1) {
+  writeHTML += '<div id="tags"><center><u>' + tags[0].toUpperCase() + '</u></center></div><br>';
   } else if (tags.length > 1) {
-    writeHTML += '<div id="tags"><center><u>' + tags.join(', ').toUpperCase() + '</u></center></div><br>';
+  writeHTML += '<div id="tags"><center><u>' + tags.join(', ').toUpperCase() + '</u></center></div><br>';
   } else {
-    console.log('Quote has no tags.');
+  console.log('Quote has no tags.');
   }
 
   //Write HTML for quote.
