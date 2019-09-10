@@ -1,7 +1,7 @@
 /*
 Unit 1 - A Random Quote Generator
 Aiming for "Exceeds Expectations Requirements" Level.
-Future improvements:
+Possible future improvements:
   1) Ensure random quote is not the current quote.
   2) Ensure random background color is not the current background color.
 */
@@ -54,16 +54,20 @@ console.log(quotes);
 
 //FUNCTIONS
 
+//Return random number
+function getRandomNumber(ceil) {
+  return Math.floor(Math.random() * ceil);
+}
+
 //Return random quote from quotes array
 function getRandomQuote () {
-  var randNumber = Math.floor(Math.random() * quotes.length);
-  console.log('Random number: ' + randNumber + ' (aka Quote ' + (randNumber + 1) + ')');  //To console: number chosen.
-  console.log(quotes[randNumber]);  //To console: chosen object.
+  var randNumber = getRandomNumber(quotes.length);
   return quotes[randNumber];
 }
 
-//Display selected quote
+//Display selected quote and selected background color
 function printQuote() {
+  console.log(Date.now());  //This is to see if this function is being called consistently.
   //Declarations
   var writeHTML = '';
   var newQuote = getRandomQuote();
@@ -87,12 +91,12 @@ function printQuote() {
   if (citation) {
     writeHTML += '<span class="citation">' + citation + '</span>';
   } else {
-    console.log('No Citation available.');
+    console.log('No Citation available for quote.');
   }
   if (year) {
     writeHTML += '<span class="year">' + year + '</span>';
   } else {
-    console.log('No Year available.');
+    console.log('No Year available for quote.');
   }
   writeHTML += '</p>';
 
@@ -102,26 +106,18 @@ function printQuote() {
   console.log(writeHTML);  //To console: HTML contents.
   outputDiv.innerHTML = writeHTML;
 }
-
-///Get RGB intensity
-function randomRGB() {
-  return Math.floor(Math.random() * 256);
-  }
   
-//Produce random color.
+//Produce random color
 function randomColor() {
   var randomLevel = 'rgb(';  //Create the starting HTML tag for RGB color.
-  randomLevel += randomRGB() + ',';  //Produces a random intensity of Red.
-  randomLevel += randomRGB() + ',';  //Produces a random intensity of Green.
-  randomLevel += randomRGB() + ')';  //Produces a random intensity of Blue.
+  randomLevel += getRandomNumber(256) + ',';  //Produces a random intensity of Red.
+  randomLevel += getRandomNumber(256) + ',';  //Produces a random intensity of Green.
+  randomLevel += getRandomNumber(256) + ')';  //Produces a random intensity of Blue.
   document.body.style.backgroundColor = randomLevel;
-  //return randomLevel;
 }
 
 //EXECUTION
 
-//var newColor = document.body.style.backgroundColor = randomColor(); //Call random background color.
 printQuote();  //Start with a random quote.
-setInterval(printQuote, 3000);
-
+setInterval(printQuote, 20000);  //Call function on a 20sec interval.
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);  //Call button functionality.
