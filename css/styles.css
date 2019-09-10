@@ -12,6 +12,7 @@ body {
 /*
 #game, #movie, #cartoon for custom headlines based on quote tags.
 */
+/*
 #game {
   font-size: 2rem;
   text-align: center;
@@ -28,6 +29,13 @@ body {
   font-size: 2rem;
   text-align: center;
   color: greenyellow;
+}
+*/
+
+#tags {
+  font-size: 2rem;
+  text-align: center;
+  color: aqua;
 }
 
 #quote-box {
