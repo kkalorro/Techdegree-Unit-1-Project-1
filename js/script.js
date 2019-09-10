@@ -1,6 +1,6 @@
 /*
 Unit 1 - A Random Quote Generator
-Aiming for "Exceeds Expectations Requirements" Level.
+Aiming for "Exceeds Expectations" Requirements Level.
 Possible future improvements:
   1) Ensure random quote is not the current quote.
   2) Ensure random background color is not the current background color.
