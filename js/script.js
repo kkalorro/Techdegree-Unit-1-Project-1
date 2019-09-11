@@ -8,6 +8,8 @@ Possible future improvements:
 
 //GLOBAL DECLARATIONS.
 
+//Setup a timer to ensure page reloads consistency.
+var reloadTimer;
 var quotes = [
   //Complete Quote 1.
   {
@@ -74,6 +76,8 @@ function getRandomQuote () {
 function printQuote() {
   //This is to check if this function is being called at a consistent interval.
   console.log(Date.now());
+  //Clean the timer variable just in case it becomes out of sync.
+  clearInterval(reloadTimer);
   //Declarations.
   var writeHTML = '';
   var newQuote = getRandomQuote();
@@ -116,6 +120,9 @@ function printQuote() {
   console.log(writeHTML);
   //Print HTML to page.
   outputDiv.innerHTML = writeHTML;
+
+  //Call random quote function on a 20sec interval.
+  reloadTimer = setInterval(printQuote, 20000);
 }
   
 //Produce random color.
@@ -132,7 +139,5 @@ function randomColor() {
 
 //Start with a random quote.
 printQuote();
-//Call random quote function on a 20sec interval.
-setInterval(printQuote, 20000);
 //Preexisting button functionality.
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
